@@ -1,0 +1,24 @@
+img {
+	height: 40px;
+	width: 40px;
+}
+
+.person_container {
+	/*border: 1px solid;*/
+	margin: 10px;
+	box-sizing: 1px;
+}
+
+.person_container:nth-child(odd)
+{
+	background: lightblue;
+}
+
+.person_container:nth-child(even)
+{
+	background: lightyellow;
+}
+
+.dashed {
+	border-style: dashed;
+}
