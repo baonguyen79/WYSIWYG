@@ -4,7 +4,7 @@ img {
 }
 
 .person_container {
-	/*border: 1px solid;*/
+	border: 1px solid;
 	margin: 10px;
 	box-sizing: 1px;
 }

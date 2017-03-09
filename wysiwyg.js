@@ -12,7 +12,7 @@ var FamousPersons = [
 	  {
 	  title: "Samurai2",
 	  name: "Tomoe Gozen2",
-	  bio: "Serving under Minamoto Yoshinaka, Tomoe was one of his finest soldiers, and her skills in battle dwarfed many of those held by even the strongest men in her unit.",
+	  bio: " 2 Serving under Minamoto Yoshinaka, Tomoe was one of his finest soldiers, and her skills in battle dwarfed many of those held by even the strongest men in her unit.",
 	  image: "https://upload.wikimedia.org/wikipedia/commons/4/48/Tomoe-Gozen.jpg",
 	  lifespan: {
 	    birth: 1747,
@@ -22,7 +22,7 @@ var FamousPersons = [
 
 ];
 
-
+var holdActiveId;
 var outputEl = document.getElementById("outputEl");
 var personDiv = "";
 var personHeader = "";
@@ -70,29 +70,28 @@ for (var i = 0; i < containerEl.length; i++) {
 
 function personEvent(e){
 // Logic to execute when the element is clicked
-    // e.target.style.border = "dashed";
-    e.target.classList.add("dashed");
+ 
+    e.currentTarget.classList.add("dashed");
     this.childNodes[2].id = "select";
     var textBox = document.getElementById("inputText");
-    textBox.innerHTML = this.childNodes[2].textContent;
+    console.log("this" , this.childNodes[2].textContent);
+    textBox.value = this.childNodes[2].textContent;
     textBox.focus();
     textBox.addEventListener("keyup", textBoxEvent);
 
 } 
 
 function textBoxEvent (e){
+	e.preventDefault();
 	var select = document.getElementById("select");
 
-
 	if (e.keyCode === 13){
-			this.value = "";
-
-			var a = document.getElementById("select");
-			a.parentNode.classList.remove("dashed");
-			a.id = "";
-
-			console.log(e , ' ' , a );
-   
+		this.value = "";
+		this.blur();
+		this.removeEventListener("keyup", textBoxEvent);
+		var a = document.getElementById("select");
+		a.parentNode.classList.toggle("dashed");
+		a.id = "";
 		}
 	else {
 			select.innerText = this.value;
