@@ -83,7 +83,16 @@ for (var i = 0; i < containerEl.length; i++) {
 // Event Handler function when person element click
 //******************************************
 function personEvent(e){
- 
+ 	var select = document.getElementById("select");  
+ 	if (select != null){								//remove previous select
+	 	select.id = "";
+	 	console.log("parent " , select.parentNode );
+	 	select.parentNode.classList.remove("dashed");
+	 	// select.style.border = "solid";
+	 	console.log("--" , select);
+    }
+
+    console.log(e);
     e.currentTarget.classList.add("dashed");
     this.childNodes[2].id = "select";
     var textBox = document.getElementById("inputText");
@@ -106,7 +115,7 @@ function textBoxEvent (e){
 		this.blur();
 		this.removeEventListener("keyup", textBoxEvent);
 		var a = document.getElementById("select");
-		a.parentNode.classList.toggle("dashed");
+		a.parentNode.classList.classList("dashed");
 		a.id = "";
 		}
 	else {
